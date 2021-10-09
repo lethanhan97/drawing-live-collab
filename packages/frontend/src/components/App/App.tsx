@@ -1,10 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+import LandingPage from '../LandingPage';
+
+const AppStyled = styled.section`
+  height: 100vh;
+  width: 100vw;
+`;
 
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <AppStyled>
+      <LandingPage></LandingPage>
+    </AppStyled>
   );
 }
 
