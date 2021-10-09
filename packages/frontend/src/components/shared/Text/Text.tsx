@@ -7,7 +7,7 @@ interface IText {
 }
 
 const DecorativeText = styled.h1`
-  color: ${colorCodes.orange};
+  color: ${colorCodes.brown};
   font-size: 10vw;
   position: relative;
 
@@ -16,9 +16,9 @@ const DecorativeText = styled.h1`
     position: absolute;
     bottom: -5%;
     left: 0;
-    background-color: ${colorCodes.darkGreen};
+    background-color: ${colorCodes.orange};
     width: 0;
-    height: 30%;
+    height: 20%;
     z-index: -1;
 
     transition: width 500ms ease;

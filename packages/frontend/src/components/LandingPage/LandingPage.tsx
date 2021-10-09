@@ -9,7 +9,8 @@ const LandingPageStyled = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${colorCodes.lightMustard};
-  border: solid 3vw ${colorCodes.white};
+  border-left: solid 5vw ${colorCodes.white};
+  border-right: solid 5vw ${colorCodes.white};
 
   z-index: 0;
 
@@ -38,7 +39,7 @@ export default function LandingPage() {
   const zIndexReset = { zIndex: 2 };
   return (
     <LandingPageStyled>
-      <Text.DecorativeText style={zIndexReset}>drawingme</Text.DecorativeText>
+      <Text.DecorativeText style={zIndexReset}>drawingme.</Text.DecorativeText>
     </LandingPageStyled>
   );
 }

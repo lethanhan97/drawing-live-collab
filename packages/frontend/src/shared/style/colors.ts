@@ -7,4 +7,5 @@ export const colorCodes = {
   lightMustard: '#FBE697',
   darkGreen: '#414A12',
   green: '#567C57',
+  brown: '#A96E12',
 };
