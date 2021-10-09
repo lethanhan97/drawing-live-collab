@@ -14,9 +14,10 @@ const DecorativeText = styled.h1`
   &::before {
     content: ' ';
     position: absolute;
-    bottom: -5%;
+    bottom: -10%;
     left: 0;
     background-color: ${colorCodes.orange};
+    border-bottom: 1vh solid ${colorCodes.darkGreen};
     width: 0;
     height: 20%;
     z-index: -1;

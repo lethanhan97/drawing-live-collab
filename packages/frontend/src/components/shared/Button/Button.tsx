@@ -11,7 +11,9 @@ interface ButtonProps {
 const getButtonColor = (mode: ButtonModes) => {
   switch (mode) {
     case 'primary':
-      return colorCodes.orange;
+      return colorCodes.red;
+    case 'secondary':
+      return colorCodes.darkGreen;
   }
 };
 
