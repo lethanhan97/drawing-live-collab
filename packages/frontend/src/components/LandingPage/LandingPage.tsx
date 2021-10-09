@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { colorCodes } from '../../shared/style/colors';
 import paperTexture from '../../shared/assets/img/paper-texture.jpeg';
 import Text from '../shared/Text';
+import Button from '../shared/Button';
 
 const LandingPageStyled = styled.div`
   width: 100%;
@@ -17,8 +18,11 @@ const LandingPageStyled = styled.div`
   position: relative;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  padding-bottom: 20vh;
 
   &::after {
     z-index: 1;
@@ -39,7 +43,15 @@ export default function LandingPage() {
   const zIndexReset = { zIndex: 2 };
   return (
     <LandingPageStyled>
-      <Text.DecorativeText style={zIndexReset}>drawingme.</Text.DecorativeText>
+      <Text.DecorativeText style={zIndexReset}>drawing_me.</Text.DecorativeText>
+      <input type="text" style={zIndexReset}></input>
+      <Button
+        style={zIndexReset}
+        mode="primary"
+        onClick={() => console.log('sup')}
+      >
+        Let's go
+      </Button>
     </LandingPageStyled>
   );
 }

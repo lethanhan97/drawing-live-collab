@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { colorCodes } from '../../../shared/style/colors';
 
@@ -10,6 +9,7 @@ const DecorativeText = styled.h1`
   color: ${colorCodes.brown};
   font-size: 10vw;
   position: relative;
+  margin: 0;
 
   &::before {
     content: ' ';
