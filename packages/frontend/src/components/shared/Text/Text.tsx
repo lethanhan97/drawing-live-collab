@@ -10,6 +10,7 @@ const DecorativeText = styled.h1`
   font-size: 10vw;
   position: relative;
   margin: 0;
+  margin-bottom: 2vw;
 
   &::before {
     content: ' ';

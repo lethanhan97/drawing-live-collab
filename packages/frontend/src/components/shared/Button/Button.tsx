@@ -23,6 +23,7 @@ const Button = styled.button<ButtonProps>`
   border: none;
   font-size: 4vw;
   padding: 1vw;
+  margin-top: 25px;
   color: ${colorCodes.white};
   box-shadow: 0px 0px 0px 0px ${colorCodes.black};
   transform: translate(0px, 0px);

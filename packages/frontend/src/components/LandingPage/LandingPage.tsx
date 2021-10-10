@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { colorCodes } from '../../shared/style/colors';
 import paperTexture from '../../shared/assets/img/paper-texture.jpeg';
 import Text from '../shared/Text';
+import Input from '../shared/Input';
 import Button from '../shared/Button';
 
 const LandingPageStyled = styled.div`
@@ -44,7 +45,10 @@ export default function LandingPage() {
   return (
     <LandingPageStyled>
       <Text.DecorativeText style={zIndexReset}>drawing_me.</Text.DecorativeText>
-      <input type="text" style={zIndexReset}></input>
+      <Input.Text
+        style={{ marginTop: '5vh', marginBottom: '5vh', ...zIndexReset }}
+        placeholder="Your name?"
+      ></Input.Text>
       <Button
         style={zIndexReset}
         mode="primary"
