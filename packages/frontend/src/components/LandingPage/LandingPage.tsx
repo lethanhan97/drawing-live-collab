@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { colorCodes } from '../../shared/style/colors';
@@ -40,6 +40,7 @@ const LandingPageStyled = styled.div`
 `;
 
 export default function LandingPage() {
+  const [username, setUsername] = useState('');
   // Added because of the background image having pseudoelement with index 1
   const zIndexReset = { zIndex: 2 };
   return (
@@ -48,11 +49,13 @@ export default function LandingPage() {
       <Input.Text
         style={{ marginTop: '5vh', marginBottom: '5vh', ...zIndexReset }}
         placeholder="Your name?"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
       ></Input.Text>
       <Button
         style={zIndexReset}
         mode="primary"
-        onClick={() => console.log('sup')}
+        onClick={() => console.log(username)}
       >
         Let's go
       </Button>

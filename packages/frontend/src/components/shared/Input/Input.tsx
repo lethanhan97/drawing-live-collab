@@ -40,15 +40,15 @@ const CircleDecor = styled.div`
 interface TextProps {
   placeholder?: string;
   style?: any;
-  onChange?: () => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
 }
 
 const Text = (props: TextProps) => {
   return (
-    <WrapperText {...props}>
+    <WrapperText style={props.style}>
       <CircleDecor></CircleDecor>
-      <InputText placeholder={props.placeholder}></InputText>
+      <InputText {...props}></InputText>
     </WrapperText>
   );
 };
