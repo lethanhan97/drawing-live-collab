@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { paperShadowInner } from '../../../shared/style/box-shadow';
 import { colorCodes } from '../../../shared/style/colors';
 
 interface IInput {
@@ -33,8 +34,7 @@ const CircleDecor = styled.div`
   height: 2vw;
   margin-right: 1vw;
   border-radius: 1vw;
-  box-shadow: inset 1px 1px 1px 0px rgb(0 0 0 / 50%),
-    inset 0 0 0 25px ${colorCodes.lightMustard};
+  box-shadow: ${paperShadowInner};
 `;
 
 interface TextProps {
