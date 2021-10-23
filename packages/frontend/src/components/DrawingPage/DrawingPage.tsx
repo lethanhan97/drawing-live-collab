@@ -11,14 +11,15 @@ const DrawingPageStyled = styled.div`
   align-items: center;
 `;
 
+const CanvasStyled = styled.canvas`
+  background-color: white;
+  box-shadow: ${paperShadowOuter};
+`;
+
 export default function DrawingPage() {
   return (
     <DrawingPageStyled>
-      <canvas
-        width={1000}
-        height={1000}
-        style={{ backgroundColor: 'white', boxShadow: paperShadowOuter }}
-      ></canvas>
+      <CanvasStyled width={1000} height={1000} />
     </DrawingPageStyled>
   );
 }
