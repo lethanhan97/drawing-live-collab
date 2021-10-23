@@ -7,6 +7,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import DrawingPage from '../DrawingPage';
 
 const AppStyled = styled.section`
   height: 100vh;
@@ -19,6 +20,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/login" component={LandingPage} />
+          <Route path="/drawing" component={DrawingPage} />
           <Route path="*" render={() => <Redirect to="/login" />} />
         </Switch>
       </Router>
