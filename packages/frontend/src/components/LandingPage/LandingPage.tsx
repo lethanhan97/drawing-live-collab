@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 
 import Text from '../shared/Text';
 import Input from '../shared/Input';
