@@ -18,8 +18,6 @@ export default function Cursor({
   const SVG_WIDTH = 200;
   const SVG_HEIGHT = CURSOR_RADIUS + 40;
 
-  console.log('cursor display', cursorDisplay);
-
   return (
     <svg
       width={SVG_WIDTH}

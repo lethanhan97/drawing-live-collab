@@ -24,6 +24,10 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
+  socket.on('draw', (message) => {
+    console.log('message received', message);
+    socket.broadcast.emit('draw', message);
+  });
 });
 
 appServer.listen(process.env.PORT || PORT, () => {
