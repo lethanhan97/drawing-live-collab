@@ -10,7 +10,7 @@ const initialState: UsernameState = {
   setUsername: () => {},
 };
 
-const UsernameContext = createContext(initialState);
+const UsernameContext = createContext<UsernameState>(initialState);
 export const UsernameProvider = ({ children }: { children: ReactChild[] }) => {
   const [username, setUsername] = useState('');
   return (
