@@ -23,12 +23,6 @@ export function useCursor(canvasRef: RefObject<HTMLCanvasElement>) {
   });
 
   useEffect(() => {
-    socket?.on(CUSOR_MOVE_EVENT, (message) => {
-      console.log(message);
-    });
-  }, [socket]);
-
-  useEffect(() => {
     if (!canvasRef.current) return;
 
     const { current: canvasEl } = canvasRef;
@@ -81,5 +75,6 @@ export function useCursor(canvasRef: RefObject<HTMLCanvasElement>) {
   return {
     ...cursorDisplayState,
     cursorDisplay: usernameContext.username,
+    key: socket?.id || '',
   };
 }
