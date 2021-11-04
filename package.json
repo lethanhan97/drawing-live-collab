@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "backend-start": "yarn workspace backend start",
     "frontend-start": "yarn workspace frontend start",
     "frontend-format": "yarn workspace frontend format"
   },
