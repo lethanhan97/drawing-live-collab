@@ -4,13 +4,21 @@ export interface CursorProps {
   shouldDisplay: boolean;
   x: number;
   y: number;
+  cursorDisplay: string;
 }
 
-export default function Cursor({ x, y, shouldDisplay }: CursorProps) {
+export default function Cursor({
+  x,
+  y,
+  shouldDisplay,
+  cursorDisplay,
+}: CursorProps) {
   const CURSOR_RADIUS = 5;
   const CURSOR_LABEL_PADDING = 20;
   const SVG_WIDTH = 200;
   const SVG_HEIGHT = CURSOR_RADIUS + 40;
+
+  console.log('cursor display', cursorDisplay);
 
   return (
     <svg
@@ -32,7 +40,7 @@ export default function Cursor({ x, y, shouldDisplay }: CursorProps) {
           y={CURSOR_RADIUS * 2 + CURSOR_LABEL_PADDING}
           textAnchor="middle"
         >
-          An
+          {cursorDisplay}
         </text>
       </g>
     </svg>

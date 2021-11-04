@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import styled from 'styled-components';
+import UsernameContext from '../../shared/contexts/username.context';
 import { paperShadowOuter } from '../../shared/style/box-shadow';
 import { colorCodes } from '../../shared/style/colors';
 import Cursor from './Cursor';
@@ -20,18 +21,22 @@ const CanvasStyled = styled.canvas`
   cursor: none;
 `;
 
-function DrawableCanvas() {
+function DrawableCanvas({ cursorDisplay }: { cursorDisplay: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const CANVAS_WIDTH = 500;
   const CANVAS_HEIGHT = 500;
 
   useDrawing(canvasRef);
-  const cursorDisplayState = useCursor(canvasRef);
-  const { x, y, shouldDisplay } = cursorDisplayState;
+  const { x, y, shouldDisplay } = useCursor(canvasRef);
 
   return (
     <>
-      <Cursor x={x} y={y} shouldDisplay={shouldDisplay} />
+      <Cursor
+        x={x}
+        y={y}
+        shouldDisplay={shouldDisplay}
+        cursorDisplay={cursorDisplay}
+      />
       <CanvasStyled
         ref={canvasRef}
         width={CANVAS_WIDTH}
@@ -42,9 +47,10 @@ function DrawableCanvas() {
 }
 
 export default function DrawingPage() {
+  const usernameContext = useContext(UsernameContext);
   return (
     <DrawingPageStyled>
-      <DrawableCanvas />
+      <DrawableCanvas cursorDisplay={usernameContext.username} />
     </DrawingPageStyled>
   );
 }

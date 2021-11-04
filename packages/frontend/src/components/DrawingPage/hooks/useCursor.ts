@@ -8,7 +8,9 @@ interface CursorCustomEvent {
 }
 
 export function useCursor(canvasRef: RefObject<HTMLCanvasElement>) {
-  const [cursorDisplayState, setCursorDisplayState] = useState<CursorProps>({
+  const [cursorDisplayState, setCursorDisplayState] = useState<
+    Omit<CursorProps, 'cursorDisplay'>
+  >({
     shouldDisplay: false,
     x: 0,
     y: 0,
