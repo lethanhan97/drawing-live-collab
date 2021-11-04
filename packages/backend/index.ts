@@ -19,14 +19,46 @@ app.get('/', (_, res) => {
   });
 });
 
+enum SocketEvents {
+  Draw = 'draw',
+  CursorMove = 'cursor-move',
+}
+
+interface Cursor {
+  shouldDisplay: boolean;
+  cursorDisplay: string;
+  x: number;
+  y: number;
+}
+
+type CursorState = {
+  [key: string]: Cursor;
+};
+
+const createDefaultCursor = (): Cursor => ({
+  shouldDisplay: false,
+  cursorDisplay: '',
+  x: 0,
+  y: 0,
+});
+
+const cursors: CursorState = {};
 io.on('connection', (socket) => {
-  console.log('somebody connected', socket.id);
+  cursors[socket.id] = createDefaultCursor();
+
+  console.log('connection count', io.sockets.sockets.size);
   socket.on('disconnect', () => {
-    console.log('user disconnected');
+    delete cursors[socket.id];
   });
-  socket.on('draw', (message) => {
-    console.log('message received', message);
-    socket.broadcast.emit('draw', message);
+
+  socket.on(SocketEvents.Draw, (message) => {
+    socket.broadcast.emit(SocketEvents.Draw, message);
+  });
+
+  socket.on(SocketEvents.CursorMove, (message: Cursor) => {
+    cursors[socket.id] = message;
+
+    socket.broadcast.emit(SocketEvents.CursorMove, cursors);
   });
 });
 

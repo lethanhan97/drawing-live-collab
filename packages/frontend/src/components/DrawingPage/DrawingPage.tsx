@@ -21,13 +21,13 @@ const CanvasStyled = styled.canvas`
   cursor: none;
 `;
 
-function DrawableCanvas({ cursorDisplay }: { cursorDisplay: string }) {
+function DrawableCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const CANVAS_WIDTH = 500;
   const CANVAS_HEIGHT = 500;
 
   useDrawing(canvasRef);
-  const { x, y, shouldDisplay } = useCursor(canvasRef);
+  const { x, y, shouldDisplay, cursorDisplay } = useCursor(canvasRef);
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function DrawingPage() {
   const usernameContext = useContext(UsernameContext);
   return (
     <DrawingPageStyled>
-      <DrawableCanvas cursorDisplay={usernameContext.username} />
+      <DrawableCanvas />
     </DrawingPageStyled>
   );
 }

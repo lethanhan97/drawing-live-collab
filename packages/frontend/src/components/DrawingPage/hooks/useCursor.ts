@@ -1,5 +1,7 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useContext, useEffect, useState } from 'react';
 import { fromEvent, map, merge, Observable, tap } from 'rxjs';
+import SocketContext from '../../../shared/contexts/socket.context';
+import UsernameContext from '../../../shared/contexts/username.context';
 import { CursorProps } from '../Cursor';
 
 interface CursorCustomEvent {
@@ -7,7 +9,11 @@ interface CursorCustomEvent {
   eventPayload: MouseEvent;
 }
 
+const CUSOR_MOVE_EVENT = 'cursor-move';
+
 export function useCursor(canvasRef: RefObject<HTMLCanvasElement>) {
+  const usernameContext = useContext(UsernameContext);
+  const socket = useContext(SocketContext);
   const [cursorDisplayState, setCursorDisplayState] = useState<
     Omit<CursorProps, 'cursorDisplay'>
   >({
@@ -15,6 +21,12 @@ export function useCursor(canvasRef: RefObject<HTMLCanvasElement>) {
     x: 0,
     y: 0,
   });
+
+  useEffect(() => {
+    socket?.on(CUSOR_MOVE_EVENT, (message) => {
+      console.log(message);
+    });
+  }, [socket]);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -35,12 +47,24 @@ export function useCursor(canvasRef: RefObject<HTMLCanvasElement>) {
       .pipe(
         tap(({ eventType, eventPayload }) => {
           if (eventType === 'mouseLeave') {
+            socket?.emit(CUSOR_MOVE_EVENT, {
+              shouldDisplay: false,
+              cursorDisplay: usernameContext.username,
+              x: 0,
+              y: 0,
+            });
             setCursorDisplayState((prevState) => ({
               ...prevState,
               shouldDisplay: false,
             }));
           } else {
             const { clientX: x, clientY: y } = eventPayload;
+            socket?.emit(CUSOR_MOVE_EVENT, {
+              shouldDisplay: true,
+              cursorDisplay: usernameContext.username,
+              x,
+              y,
+            });
             setCursorDisplayState({
               shouldDisplay: true,
               x,
@@ -52,7 +76,10 @@ export function useCursor(canvasRef: RefObject<HTMLCanvasElement>) {
       .subscribe();
 
     return () => subscription.unsubscribe();
-  }, [canvasRef]);
+  }, [canvasRef, socket, usernameContext]);
 
-  return cursorDisplayState;
+  return {
+    ...cursorDisplayState,
+    cursorDisplay: usernameContext.username,
+  };
 }
